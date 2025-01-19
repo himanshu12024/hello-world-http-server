@@ -13,3 +13,14 @@ blocks:
             - checkout
             - go build -o hello-go main.go
             - artifact push workflow hello-go
+    dependencies: []
+  - name: Test
+    dependencies:
+      - Build
+    task:
+      jobs:
+        - name: go test
+          commands:
+            - checkout
+            - artifact pull workflow hello-go
+            - go test -v
