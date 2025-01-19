@@ -13,14 +13,6 @@ blocks:
             - checkout
             - go build -o hello-go main.go
             - artifact push workflow hello-go
-        - name: go lint
-          commands:
-            - checkout
-            - go vet ./...
-        - name: go list
-          commands:
-            - checkout
-            - go list ./...
     dependencies: []
   - name: Test
     dependencies:
@@ -32,3 +24,11 @@ blocks:
             - checkout
             - artifact pull workflow hello-go
             - go test -v
+        - name: go lint
+          commands:
+            - checkout
+            - go vet ./...
+        - name: go list
+          commands:
+            - checkout
+            - go list ./...
