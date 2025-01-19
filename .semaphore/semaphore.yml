@@ -12,3 +12,4 @@ blocks:
           commands:
             - checkout
             - go build -o hello-ho main.go
+            - artifact push workflow hello-go
