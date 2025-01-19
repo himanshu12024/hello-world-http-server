@@ -11,5 +11,5 @@ blocks:
         - name: go build
           commands:
             - checkout
-            - go build -o hello-ho main.go
+            - go build -o hello-go main.go
             - artifact push workflow hello-go
