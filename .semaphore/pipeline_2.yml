@@ -1,0 +1,17 @@
+version: v1.0
+name: Release
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu2004
+blocks:
+  - name: 'Block #1'
+    task:
+      jobs:
+        - name: gh-release
+          commands:
+            - checkout
+            - artifact pull workflow hello-go
+            - 'gh release create "$SEMAPHORE_GIT_TAG_NAME" hello-go --latest -t "$SEMAPHORE_GIT_TAG_NAME" -n "Continuous Delivery Release: $SEMAPHORE_GIT_TAG_NAME"'
+      secrets:
+        - name: github-release
